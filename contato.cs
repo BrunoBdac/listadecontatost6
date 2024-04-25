@@ -60,15 +60,36 @@ namespace listadecontatos
             }
         }
 
-            public Contato()
+            public contato()
         {
             Nome = "Claúdio";
             Sobrenome = "Genésio II";
             Telefone = "(11) 1245-35432";
         }
         //sobrecarga do metodo constutor
-
+        public contato(string nome, string sobrenome, string telefone)
+        {
+            Nome = nome;
+            Sobrenome = sobrenome;
+            Telefone = telefone;
         }
+
+        //ToString() pertence a classse object
+        // todas as classes são filhas de object(herança)
+        // "override" sobreescreve o método da classe pai
+        public override string ToString()
+        {
+            //inicializa a variável como vazia.
+            string saida = string.Empty;
+            saida += string.Format("{0} {1}", Nome, Sobrenome);
+            saida += string.Format("({0}) {1}-{2}",
+                Telefone.Substring(0, 2),
+                Telefone.Substring(3, 5),
+                Telefone.Substring(7, 4));
+        }
+
     }
-}
+    }
+
+
 
