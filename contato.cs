@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace listadecontatos
 {
-    internal class contato
+    internal class Contato
     {
         // variáveis
         private string nome;
@@ -49,25 +50,25 @@ namespace listadecontatos
             }
             set
             {
-                if (value.Length == 13)
+                if (value.Length == 11)
                 {
                     telefone = value;
                 }
                 else
                 {
-                    telefone = "00- 0000 00000";
+                    telefone = "(00) 00000-0000";
                 }
             }
         }
 
-            public contato()
+            public Contato()
         {
             Nome = "Claúdio";
             Sobrenome = "Genésio II";
             Telefone = "(11) 1245-35432";
         }
         //sobrecarga do metodo constutor
-        public contato(string nome, string sobrenome, string telefone)
+        public Contato(string nome, string sobrenome, string telefone)
         {
             Nome = nome;
             Sobrenome = sobrenome;
@@ -84,8 +85,9 @@ namespace listadecontatos
             saida += string.Format("{0} {1}", Nome, Sobrenome);
             saida += string.Format("({0}) {1}-{2}",
                 Telefone.Substring(0, 2),
-                Telefone.Substring(3, 5),
+                Telefone.Substring(2, 5),
                 Telefone.Substring(7, 4));
+            return saida;
         }
 
     }
