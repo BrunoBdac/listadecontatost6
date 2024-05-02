@@ -45,8 +45,33 @@ namespace listadecontatos
 
             listadeContatos = new Contato[Convert.ToInt32(ler.ReadLine())];
 
+            for (int x = 0; x <= listadeContatos.Length; ++x)
+            {
+                listadeContatos[x] = new Contato();
+                listadeContatos[x].Nome = ler.ReadLine();
+                listadeContatos[x].Sobrenome = ler.ReadLine();
+                listadeContatos[x].Telefone = ler.ReadLine();
+            }
+            ler.Close();
+
         }
 
+        private void Exibir()
+        {
+            listBox1.Items.Clear();
+
+            for(int x = 0; x < listadeContatos.Length; x++)
+            {
+                listBox1.Items.Add(listadeContatos[x].ToString());
+            }
+        }
+
+        private void LimparCampos()
+        {
+            textBoxNome.Text = string.Empty;
+            textBoxSobrenome.Text = string.Empty;
+            textBoxTelefone.Text = string.Empty;
+        }
         private void Nome(object sender, EventArgs e)
         {
 
@@ -74,7 +99,8 @@ namespace listadecontatos
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Ler();
+            Exibir();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,7 +115,14 @@ namespace listadecontatos
             contato.Nome = textBoxNome.Text;
             contato.Sobrenome = textBoxSobrenome.Text;
             contato.Telefone = textBoxTelefone.Text;
+
+
             listBox1.Items.Add(contato.ToString());
+
+            Escrever(contato);
+            Ler();
+            Exibir();
+            LimparCampos();
         }
 
         private void textBoxSobrenome_TextChanged(object sender, EventArgs e)
